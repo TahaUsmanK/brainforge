@@ -357,22 +357,9 @@ export class BrainForgeTranspiler {
         output += "\n[Execution halted: maximum operation count reached]"
       }
 
-      // Add memory dump for debugging
-      output += "\n\nMemory cells after execution: ["
-      for (let i = 0; i < Math.min(20, memory.length); i++) {
-        output += memory[i]
-        if (i < Math.min(19, memory.length - 1)) output += ", "
-      }
-      output += "...]"
-      output += `\nTotal operations executed: ${operationCount}\n`
+      const executionTime = Date.now() - startTime
+      this.logger.info(`Execution completed in ${executionTime}ms with ${operationCount} operations`)
 
-      // Add execution statistics
-      output += `\nExecution Statistics:\n`
-      output += `- Memory cells used: ${this.countUsedCells(memory)}\n`
-      output += `- Execution time: ${Date.now() - startTime}ms\n`
-      output += `- Instructions executed: ${operationCount}\n`
-
-      this.logger.info("Execution completed successfully")
       return output
     } catch (error) {
       const errorMessage = error instanceof Error ? error.message : String(error)
@@ -382,17 +369,27 @@ export class BrainForgeTranspiler {
   }
 
   /**
-   * Counts the number of non-zero cells in memory
+   * Executes JavaScript code by transpiling to BrainForge and running it
    *
-   * @param memory - Memory array
-   * @returns Count of used cells
+   * @param jsCode - JavaScript code to execute
+   * @param input - Optional input string for the program
+   * @returns Execution output
    */
-  private countUsedCells(memory: Uint8Array): number {
-    let count = 0
-    for (let i = 0; i < memory.length; i++) {
-      if (memory[i] !== 0) count++
+  executeJavaScript(jsCode: string, input = ""): string {
+    try {
+      // Transpile JavaScript to BrainForge
+      const result = this.transpile(jsCode)
+
+      if (!result.success || !result.bfCode) {
+        return `Transpilation failed: ${result.error || "Unknown error"}`
+      }
+
+      // Execute the BrainForge code
+      return this.executeCode(result.bfCode, input)
+    } catch (error) {
+      const errorMessage = error instanceof Error ? error.message : String(error)
+      return `Error: ${errorMessage}`
     }
-    return count
   }
 
   /**

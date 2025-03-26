@@ -192,6 +192,15 @@ export class GuiManager {
   }
 
   /**
+   * Gets the window title
+   *
+   * @returns Window title
+   */
+  getWindowTitle(): string {
+    return this.windowTitle
+  }
+
+  /**
    * Sets the window dimensions
    *
    * @param width - Window width
@@ -201,6 +210,24 @@ export class GuiManager {
     this.windowWidth = width
     this.windowHeight = height
     this.logger.debug(`Set window dimensions to: ${width}x${height}`)
+  }
+
+  /**
+   * Gets the window width
+   *
+   * @returns Window width
+   */
+  getWindowWidth(): number {
+    return this.windowWidth
+  }
+
+  /**
+   * Gets the window height
+   *
+   * @returns Window height
+   */
+  getWindowHeight(): number {
+    return this.windowHeight
   }
 
   /**

@@ -81,6 +81,8 @@ export enum NodeType {
   IDENTIFIER = "Identifier",
   LITERAL = "Literal",
   BINARY_EXPRESSION = "BinaryExpression",
+  LOGICAL_EXPRESSION = "LogicalExpression",
+  UPDATE_EXPRESSION = "UpdateExpression",
   CALL_EXPRESSION = "CallExpression",
   MEMBER_EXPRESSION = "MemberExpression",
   ASSIGNMENT_EXPRESSION = "AssignmentExpression",
@@ -117,6 +119,8 @@ export enum InstructionType {
 
   // Expressions
   BINARY_OPERATION = "BinaryOperation",
+  LOGICAL_OPERATION = "LogicalOperation",
+  UPDATE_OPERATION = "UpdateOperation",
 
   // I/O operations
   PRINT = "Print",
