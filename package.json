@@ -1,0 +1,68 @@
+{
+  "name": "brainforge",
+  "version": "1.1.0",
+  "description": "A JavaScript to enhanced Brainfuck transpiler with advanced features",
+  "main": "dist/index.js",
+  "types": "dist/index.d.ts",
+  "bin": {
+    "brainforge": "dist/cli/index.js"
+  },
+  "scripts": {
+    "build": "tsc",
+    "test": "jest",
+    "lint": "eslint src --ext .ts",
+    "format": "prettier --write \"src/**/*.ts\"",
+    "prepublishOnly": "npm run build",
+    "start": "node dist/cli/index.js",
+    "dev": "ts-node src/cli/index.ts"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/TahaUsmanK/brainforge.git"
+  },
+  "keywords": [
+    "brainfuck",
+    "transpiler",
+    "compiler",
+    "javascript",
+    "typescript",
+    "programming-language",
+    "esoteric"
+  ],
+  "author": "Taha Usman <tahausmank1661@gmail.com>",
+  "license": "MIT",
+  "bugs": {
+    "url": "https://github.com/TahaUsmanK/brainforge/issues"
+  },
+  "homepage": "https://github.com/TahaUsmanK/brainforge#readme",
+  "dependencies": {
+    "commander": "^11.0.0",
+    "acorn": "^8.10.0",
+    "acorn-walk": "^8.2.0",
+    "chalk": "^4.1.2",
+    "fs-extra": "^11.1.1"
+  },
+  "devDependencies": {
+    "@types/fs-extra": "^11.0.1",
+    "@types/jest": "^29.5.3",
+    "@types/node": "^20.4.5",
+    "@typescript-eslint/eslint-plugin": "^6.2.0",
+    "@typescript-eslint/parser": "^6.2.0",
+    "eslint": "^8.45.0",
+    "eslint-config-prettier": "^8.9.0",
+    "eslint-plugin-prettier": "^5.0.0",
+    "jest": "^29.6.1",
+    "prettier": "^3.0.0",
+    "ts-jest": "^29.1.1",
+    "ts-node": "^10.9.1",
+    "typescript": "^5.1.6"
+  },
+  "engines": {
+    "node": ">=16.0.0"
+  },
+  "files": [
+    "dist",
+    "LICENSE",
+    "README.md"
+  ]
+}
